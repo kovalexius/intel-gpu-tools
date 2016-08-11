@@ -30,3 +30,4 @@ intel_stepping
 intel_watermark
 skl_compute_wrpll
 skl_ddb_allocation
+netup_gpu_meter
