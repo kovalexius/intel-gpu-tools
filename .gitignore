@@ -90,6 +90,7 @@ gtk-doc.make
 gtk-doc.m4
 
 intel-gpu-tools-*/
+benchmarks/gem_exec_fault
 
 piglit
 results

@@ -26,6 +26,7 @@
 #define __IGT_SYSFS_H__
 
 #include <stdbool.h>
+#include <sys/sysmacros.h>
 
 int igt_sysfs_open(int device, int *idx);
 int igt_sysfs_open_parameters(int device);
