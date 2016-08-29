@@ -15,13 +15,13 @@ else()
 endif()
 
 
-find_package(Cairo REQUIRED)
-if(CAIRO_FOUND)
-    message(STATUS "CAIRO_LIBRARIES=${CAIRO_LIBRARIES}")
-    message(STATUS "CAIRO_INCLUDE_DIRS=${CAIRO_INCLUDE_DIRS}")
-else()
-    message(STATUS "Cairo not found!!!")
-endif()
+#find_package(Cairo REQUIRED)
+#if(CAIRO_FOUND)
+#    message(STATUS "CAIRO_LIBRARIES=${CAIRO_LIBRARIES}")
+#    message(STATUS "CAIRO_INCLUDE_DIRS=${CAIRO_INCLUDE_DIRS}")
+#else()
+#    message(STATUS "Cairo not found!!!")
+#endif()
 
 
 find_package(PCIAccess REQUIRED)
@@ -33,21 +33,22 @@ else()
 endif()
 
 
-find_package(Libunwind REQUIRED)
-if(LIBUNWIND_FOUND)
-    message(STATUS "LIBUNWIND_LIBRARIES=${LIBUNWIND_LIBRARIES}")
-    message(STATUS "LIBUNWIND_INCLUDE_DIR=${LIBUNWIND_INCLUDE_DIR}")
-else()
-    message(STATUS "Libunwind not found!!!")
-endif()
+#find_package(Libunwind REQUIRED)
+#if(LIBUNWIND_FOUND)
+#    message(STATUS "LIBUNWIND_LIBRARIES=${LIBUNWIND_LIBRARIES}")
+#    message(STATUS "LIBUNWIND_INCLUDE_DIR=${LIBUNWIND_INCLUDE_DIR}")
+#else()
+#    message(STATUS "Libunwind not found!!!")
+#endif()
 
 
 include_directories( 
                      ${Libdrm_INCLUDE_DIRS}
-                     ${CAIRO_INCLUDE_DIRS}
+#                     ${CAIRO_INCLUDE_DIRS}
                      ${PCIACCESS_INCLUDE_DIR}
                      ./
                      lib/
+                     cmake/fake_include
                     )
 
 set( INTEL_SRC
@@ -60,9 +61,8 @@ set( INTEL_SRC
      lib/igt_aux.c
      lib/igt_stats.c
      lib/igt_rand.c
-     lib/igt_kms.c
+#     lib/igt_kms.c
      lib/stubs/drm/intel_bufmgr.c
-     lib/ioctl_wrappers.c
      lib/ioctl_wrappers.c
      lib/drmtest.c
      lib/igt_debugfs.c
@@ -73,11 +73,11 @@ set( INTEL_SRC
    
 set( INTEL_LIBS
      ${Libdrm_LIBRARIES}
-     ${CAIRO_LIBRARIES}
+#     ${CAIRO_LIBRARIES}
      ${PCIACCESS_LIBRARIES}
      "-pthread"
      "-lrt"            # time.h: timer_delete()
-     "-lunwind"        # double link: Libunwind
+#     "-lunwind"        # double link: Libunwind
      "-lpciaccess"     # double link: libpciaccess
    )
                     
@@ -92,15 +92,13 @@ target_link_libraries( netup_gpu_meter
                        "-lfcgi"          # libfcgi
                      )
                                  
-add_executable( test_write_buffer
-
-                ${INTEL_SRC}
-
-                tools/test_netup_write_to_buffer.cc
-                tools/netup_get_statistics.c
-               )
+#add_executable( test_write_buffer
+#                ${INTEL_SRC}
+#                tools/test_netup_write_to_buffer.cc
+#                tools/netup_get_statistics.c
+#               )
                
-target_link_libraries(
-                        test_write_buffer
-                        ${INTEL_LIBS}
-                     )
+#target_link_libraries(
+#                        test_write_buffer
+#                        ${INTEL_LIBS}
+#                     )

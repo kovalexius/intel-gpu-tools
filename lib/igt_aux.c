@@ -817,9 +817,15 @@ static const struct type_name encoder_type_names[] = {
 	{ DRM_MODE_ENCODER_TMDS, "TMDS" },
 	{ DRM_MODE_ENCODER_LVDS, "LVDS" },
 	{ DRM_MODE_ENCODER_TVDAC, "TVDAC" },
+#ifdef DRM_MODE_ENCODER_VIRTUAL
 	{ DRM_MODE_ENCODER_VIRTUAL, "Virtual" },
+#endif
+#ifdef DRM_MODE_ENCODER_DSI
 	{ DRM_MODE_ENCODER_DSI, "DSI" },
+#endif
+#ifdef DRM_MODE_ENCODER_DPMST
 	{ DRM_MODE_ENCODER_DPMST, "DP MST" },
+#endif
 	{}
 };
 
@@ -868,8 +874,12 @@ static const struct type_name connector_type_names[] = {
 	{ DRM_MODE_CONNECTOR_HDMIB, "HDMI-B" },
 	{ DRM_MODE_CONNECTOR_TV, "TV" },
 	{ DRM_MODE_CONNECTOR_eDP, "eDP" },
+#ifdef DRM_MODE_CONNECTOR_VIRTUAL
 	{ DRM_MODE_CONNECTOR_VIRTUAL, "Virtual" },
+#endif
+#ifdef DRM_MODE_CONNECTOR_DSI
 	{ DRM_MODE_CONNECTOR_DSI, "DSI" },
+#endif
 	{}
 };
 

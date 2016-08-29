@@ -39,6 +39,20 @@
 #include "igt_kms.h"
 #include "igt_debugfs.h"
 
+// fix for build without igt_kms.c
+const char *kmstest_pipe_name(enum pipe pipe)
+{
+	const char *str[] = { "A", "B", "C" };
+
+	if (pipe == PIPE_NONE)
+		return "None";
+
+	if (pipe > 2)
+		return "invalid";
+
+	return str[pipe];
+}
+
 /**
  * SECTION:igt_debugfs
  * @short_description: Support code for debugfs features
